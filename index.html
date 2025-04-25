@@ -1,34 +1,253 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Smooth_Website</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smooth_Website – Refreshed</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
 
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      margin-top: 0px;
+      font-family: 'permanent marker', sans-serif;
+      font-size: 3em;
+      text-align: center;
+      text-shadow: 0 0 10px #1a3536;
+    }
+
+    .button-box {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 30px 0;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 0 5px #000;
+      transition: 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .youtube { background: #c4302b; }
+    .discord { background: #5865f2; }
+    .download { background: #7c3aed; }
+    .teleporter { background: #10b981; }
+
+    .logs {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 2px solid #fff;
+      padding: 20px;
+      border-radius: 15px;
+      width: 250px;
+      max-height: 300px;
+      overflow-y: auto;
+      box-shadow: 0 0 20px #00ffff55;
+      margin-top: 40px;
+    }
+
+    .logs h2 {
+      margin-top: 0;
+      font-size: 1.8em;
+      text-align: center;
+    }
+
+    .log-entry {
+      margin: 5px 0;
+      border-left: 3px solid #00ffff;
+      padding-left: 10px;
+    }
+
+    .button-container {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+    }
+
+    .glow-button {
+      position: relative;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      cursor: pointer;
+      overflow: hidden;
+      z-index: 0;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .glow-button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(120deg, #00ffff, #804180, #0b4fa8);
+      background-size: 400% 400%;
+      animation: glowAnim 4s linear infinite;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .glow-button:hover::before {
+      opacity: 1;
+    }
+
+    .glow-button:hover {
+      border-color: #00ffff8a;
+      background: rgba(0, 255, 255, 0.1);
+    }
+
+    @keyframes glowAnim {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .tetris-container {
+      position: absolute;
+      top: 160px;
+      left: 60px;
+      background: rgba(0, 0, 0, 0.65);
+      border: 2px solid #00ffff;
+      border-radius: 12px;
+      padding: 20px;
+      color: white;
+      box-shadow: 0 0 15px #00ffff88;
+      width: 280px;
+    }
+
+    .tetris-container h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 20px;
+      color: #00ffff;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .tetris-container canvas {
+      display: block;
+      margin: 0 auto;
+      border: 2px solid #444;
+      background-color: #111;
+    }
+
+    .tetris-container .controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .tetris-container .controls button {
+      background: #222;
+      color: #00ffff;
+      border: 1px solid #00ffff66;
+      padding: 8px 12px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: 0.2s ease;
+    }
+
+    .tetris-container .controls button:hover {
+      background: #00ffff33;
+    }
+
+    #score-container {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 16px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
-	<head>
-		<meta http-equiv="content-type" content="text/html" charset="utf-8" />
-		<title>smooth_website</title>
-		<style type="text/css">
+  <h1>Welcome to <br>Smooth_Website</h1>
 
-body { margin: 0px; padding: 0px; font-family:"Arial"; overflow-x:hidden; }
-img { position: absolute; display: block; margin: 0px; border: none; padding: 0px; }
-div { position: absolute; }
-			input, textarea{ position:absolute; display:block; }
+  <div class="button-box">
+    <div class="button-container">
+      <button class="glow-button" onclick="window.open('https://bit.ly/42N4LSS', '_blank')">
+        <i class="fab fa-discord"></i> Discord
+      </button>
+      <button class="glow-button" onclick="window.open('https://bit.ly/3YfnvJq', '_blank')">
+        <i class="fab fa-youtube"></i> YouTube
+      </button>
+      <button class="glow-button" onclick="window.open('https://bit.ly/3JqDr3u', '_blank')">
+        <i class="fas fa-download"></i> Download
+      </button>
+      <button class="glow-button">
+        <i class="skibidi"></i> Teleporter
+      </button>      
+    </div>
+  </div>
 
-		</style>
-		<script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js?v=6"></script>
-	</head>
-	<body>
-		<script type="text/javascript" src="smooth_website.js"></script>
-	</body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
+  <div class="logs">
+    <h2>Logs: </h2>
+    <div class="log-entry">- ...</div>
+    <div class="log-entry">- ...</div>
+    <div class="log-entry">- ...</div>
+    <div class="log-entry">- ...</div>
+    <div class="log-entry">- ...</div>
+    <div class="log-entry">- ...</div>
+  </div>
 
+  <div class="tetris-container">
+    <h2>Tetris Minigame</h2>
+    <canvas id="tetris" width="240" height="400"></canvas>
+    <div class="controls">
+      <button id="left">←</button>
+      <button id="rotate">↻</button>
+      <button id="right">→</button>
+      <button id="down">↓</button>
+    </div>
+    <div id="score-container">
+      <label>Score: <span id="score">0</span></label>
+    </div>
+  </div>
+
+  <script src="tetris.js"></script>
 </body>
 </html>
